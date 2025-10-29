@@ -16,6 +16,20 @@ use Stripe\Customer;
 class ReserveController extends Controller
 {
     /**
+     * Display a listing of the resource.
+     */
+    public function index(Request $request)
+    {
+        $items = Reserve::when($request->filled('search'), function ($query) use ($request) {
+                $query->where('name', 'like', '%' . $request->search . '%');
+            })
+            ->latest()
+            ->get();
+
+        return view('reserve.index', compact('items'));
+    }
+
+    /**
      * Display the reserve view.
      */
     public function create(): View

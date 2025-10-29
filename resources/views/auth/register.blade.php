@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Register</title>
+    <title>Register | {{ config('app.name') }}</title>
+    <link rel="icon" type="image/x-icon" href="./images/logo.ico" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -22,12 +23,15 @@
                 style="background-image: url('{{ asset('template/assets/media/misc/auth-bg.png') }}')">
                 <div class="d-flex flex-column flex-center p-6 p-lg-10 w-100">
                     <a href="#" class="mb-0 mb-lg-20">
-                        <img alt="Logo" src="{{ asset('template/assets/media/logos/one_click.png') }}" class="h-150px h-lg-200px" />
+                        <img alt="Logo" src="{{ asset('images/logo.png') }}" />
                     </a>
-                    <img class="d-none d-lg-block mx-auto w-300px w-lg-75 w-xl-500px mb-10 mb-lg-20" src="{{ asset('template/assets/media/misc/one_click.png') }}" alt="" />
-                    <h1 class="d-none d-lg-block text-white fs-2qx fw-bold text-center mb-7">One click to find services, jobs and opportunities</h1>
+                    <img class="d-none d-lg-block mx-auto w-300px w-lg-75 w-xl-500px mb-10 mb-lg-20"
+                        src="{{ asset('template/assets/media/misc/auth-screens.png') }}" alt="" />
+                    <h1 class="d-none d-lg-block text-white fs-2qx fw-bold text-center mb-7">
+                        Déménagements faits avec cœur, soul, âme et précision.
+                    </h1>
                     <div class="d-none d-lg-block text-white fs-base text-center">
-                        Your life in Canada, one click away.
+                        Copyright &copy; 2025 LogistiquePro. All rights reserved.
                     </div>
                 </div>
             </div>
@@ -170,19 +174,9 @@
                                 @enderror
                             </div>
 
-                            <!-- Términos -->
-                            <div class="fv-row mb-8">
-                                <label class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" name="terms" required />
-                                    <span class="form-check-label fw-semibold text-gray-700 fs-base ms-1">
-                                        I Accept the <a href="#" class="ms-1 link-primary">Terms</a>
-                                    </span>
-                                </label>
-                            </div>
-
                             <!-- Botón enviar -->
                             <div class="d-grid mb-10">
-                                <button type="submit" id="kt_sign_up_submit" class="btn btn-primary">
+                                <button type="submit" id="kt_sign_up_submit" class="btn btn-success">
                                     <span class="indicator-label">Sign Up</span>
                                     <span class="indicator-progress">Please wait...
                                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
@@ -192,7 +186,7 @@
 
                             <!-- Link login -->
                             <div class="text-gray-500 text-center fw-semibold fs-6">Already have an Account?
-                                <a href="{{ route('login') }}" class="link-primary fw-semibold">Sign in</a>
+                                <a href="{{ route('login') }}" class="link-success fw-semibold">Sign in</a>
                             </div>
                         </form>
 

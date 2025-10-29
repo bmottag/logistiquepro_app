@@ -16,6 +16,7 @@
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>document.documentElement.setAttribute("data-bs-theme", "light");</script>
 
     <style>
         body {

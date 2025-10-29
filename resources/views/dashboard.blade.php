@@ -9,8 +9,6 @@
             <div id="kt_app_content_container" class="app-container container-fluid">
 
                 <div class="row g-5 g-xl-10">
-
-
                     <div class="col-xl-12 mb-5 mb-xl-10">
                         <!--begin::Slider Widget 2-->
                         <div id="kt_sliders_widget_2_slider" class="card card-flush carousel carousel-custom carousel-stretch slide h-xl-100" data-bs-ride="carousel" data-bs-interval="5500">
@@ -21,17 +19,17 @@
                                 <div class="carousel-inner">
                                     <!--begin::Item-->
                                     <div class="carousel-item active show">
-										<div class="bgi-no-repeat bgi-size-cover rounded min-h-700px mb-7" style="background-image:url({{ asset('images/planA.webp') }});"></div>
+										<div class="bgi-no-repeat bgi-size-cover rounded min-h-700px mb-7" style="background-image:url({{ asset('images/truck.png') }});"></div>
                                     </div>
                                     <!--end::Item-->
                                     <!--begin::Item-->
                                     <div class="carousel-item">
-                                        <div class="bgi-no-repeat bgi-size-cover rounded min-h-700px mb-7" style="background-image:url({{ asset('images/planB.webp') }});"></div>
+                                        <div class="bgi-no-repeat bgi-size-cover rounded min-h-700px mb-7" style="background-image:url({{ asset('images/about-us.png') }});"></div>
                                     </div>
                                     <!--end::Item-->
                                     <!--begin::Item-->
                                     <div class="carousel-item">
-                                        <div class="bgi-no-repeat bgi-size-cover rounded min-h-700px mb-7" style="background-image:url({{ asset('images/planC.webp') }});"></div>
+                                        <div class="bgi-no-repeat bgi-size-cover rounded min-h-700px mb-7" style="background-image:url({{ asset('images/hero.png') }});"></div>
                                     </div>
                                     <!--end::Item-->
                                 </div>

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <title>Verify Email - {{ config('app.name') }}</title>
+    <link rel="icon" type="image/x-icon" href="./images/logo.ico" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Styles Keen -->
@@ -33,13 +34,16 @@
         <!-- Aside -->
         <div class="d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center" style="background-image: url('{{ asset('template/assets/media/misc/auth-bg.png') }}')">
             <div class="d-flex flex-column flex-center p-6 p-lg-10 w-100">
-                <a href="{{ url('/') }}" class="mb-0 mb-lg-20">
-                    <img alt="Logo" src="{{ asset('template/assets/media/logos/one_click.png') }}" class="h-150px h-lg-200px" />
+                <a href="#" class="mb-0 mb-lg-20">
+                    <img alt="Logo" src="{{ asset('images/logo.png') }}" />
                 </a>
-                <img class="d-none d-lg-block mx-auto w-300px w-lg-75 w-xl-500px mb-10 mb-lg-20" src="{{ asset('template/assets/media/misc/one_click.png') }}" alt="" />
-                <h1 class="d-none d-lg-block text-white fs-2qx fw-bold text-center mb-7">Verify Your Email</h1>
+                <img class="d-none d-lg-block mx-auto w-300px w-lg-75 w-xl-500px mb-10 mb-lg-20"
+                    src="{{ asset('template/assets/media/misc/auth-screens.png') }}" alt="" />
+                <h1 class="d-none d-lg-block text-white fs-2qx fw-bold text-center mb-7">
+                    Déménagements faits avec cœur, soul, âme et précision.
+                </h1>
                 <div class="d-none d-lg-block text-white fs-base text-center">
-                    Please verify your email to continue using {{ config('app.name') }}.
+                    Copyright &copy; 2025 LogistiquePro. All rights reserved.
                 </div>
             </div>
         </div>
@@ -70,7 +74,7 @@
                         <!-- Reenviar email -->
                         <form method="POST" action="{{ route('verification.send') }}">
                             @csrf
-                            <button type="submit" class="btn btn-primary w-100">Resend Verification Email</button>
+                            <button type="submit" class="btn btn-success w-100">Resend Verification Email</button>
                         </form>
 
                         <!-- Logout -->
@@ -83,15 +87,6 @@
 
                 </div>
             </div>
-
-            <div class="d-flex flex-center flex-wrap px-5 mt-10">
-                <div class="d-flex fw-semibold text-primary fs-base">
-                    <a href="https://keenthemes.com" class="px-5" target="_blank">Terms</a>
-                    <a href="https://devs.keenthemes.com" class="px-5" target="_blank">Plans</a>
-                    <a href="https://themes.getbootstrap.com/product/keen-the-ultimate-bootstrap-admin-theme/" class="px-5" target="_blank">Contact Us</a>
-                </div>
-            </div>
-
         </div>
     </div>
 </div>

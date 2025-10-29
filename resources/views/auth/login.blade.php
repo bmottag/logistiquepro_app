@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <title>Login | {{ config('app.name') }}</title>
+    <link rel="icon" type="image/x-icon" href="./images/logo.ico" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -14,6 +15,7 @@
 </head>
 
 <body class="app-blank">
+    <script> document.documentElement.setAttribute("data-bs-theme", "light"); </script>
     <div class="d-flex flex-column flex-root" id="kt_app_root">
         <div class="d-flex flex-column flex-lg-row flex-column-fluid">
             <!-- Imagen lateral -->
@@ -21,13 +23,15 @@
                 style="background-image: url('{{ asset('template/assets/media/misc/auth-bg.png') }}')">
                 <div class="d-flex flex-column flex-center p-6 p-lg-10 w-100">
                     <a href="#" class="mb-0 mb-lg-20">
-                        <img alt="Logo" src="{{ asset('template/assets/media/logos/one_click.png') }}" class="h-150px h-lg-200px" />
+                        <img alt="Logo" src="{{ asset('images/logo.png') }}" />
                     </a>
                     <img class="d-none d-lg-block mx-auto w-300px w-lg-75 w-xl-500px mb-10 mb-lg-20"
-                        src="{{ asset('template/assets/media/misc/one_click.png') }}" alt="" />
-                    <h1 class="d-none d-lg-block text-white fs-2qx fw-bold text-center mb-7">One click to find services, jobs and opportunities</h1>
+                        src="{{ asset('template/assets/media/misc/auth-screens.png') }}" alt="" />
+                    <h1 class="d-none d-lg-block text-white fs-2qx fw-bold text-center mb-7">
+                        Déménagements faits avec cœur, soul, âme et précision.
+                    </h1>
                     <div class="d-none d-lg-block text-white fs-base text-center">
-                        Your life in Canada, one click away.
+                        Copyright &copy; 2025 LogistiquePro. All rights reserved.
                     </div>
                 </div>
             </div>
@@ -84,13 +88,13 @@
                                 </div>
 
                                 @if (Route::has('password.request'))
-                                    <a href="{{ route('password.request') }}" class="link-primary">Forgot Password?</a>
+                                    <a href="{{ route('password.request') }}" class="link-success">Forgot Password?</a>
                                 @endif
                             </div>
 
                             <!-- Botón de login -->
                             <div class="d-grid mb-10">
-                                <button type="submit" id="kt_sign_in_submit" class="btn btn-primary">
+                                <button type="submit" id="kt_sign_in_submit" class="btn btn-success">
                                     <span class="indicator-label">Sign In</span>
                                     <span class="indicator-progress">Please wait...
                                         <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
@@ -101,7 +105,7 @@
                             <!-- Registro -->
                             @if (Route::has('register'))
                                 <div class="text-gray-500 text-center fw-semibold fs-6">Not a Member yet?
-                                    <a href="{{ route('register') }}" class="link-primary">Sign up</a>
+                                    <a href="{{ route('register') }}" class="link-success">Sign up</a>
                                 </div>
                             @endif
                         </form>

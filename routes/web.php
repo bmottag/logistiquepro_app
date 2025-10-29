@@ -36,39 +36,17 @@ Route::middleware('guest')->group(function () {
     Route::get('/reserve/return', [ReserveController::class, 'return'])->name('reserve.return');
 
 
+    Route::get('/test-mail', function () {
 
+        $reserve = App\Models\Reserve::where('id', 4)->first();
 
+        // Enviar usando la cola (recomendado con Mailpit)
+        //Mail::to($reserve->email)->queue(new ReservePaymentConfirmedMail($reserve));
+        //Mail::to(config('mail.admin_address'))->queue(new ReserveAdminPaymentNotificationMail($reserve));
 
-
-
-
-
-
-
-Route::get('/test-mail', function () {
-
-    $reserve = App\Models\Reserve::where('id', 4)->first();
-
-    // Enviar usando la cola (recomendado con Mailpit)
-    //Mail::to($reserve->email)->queue(new ReservePaymentConfirmedMail($reserve));
-    //Mail::to(config('mail.admin_address'))->queue(new ReserveAdminPaymentNotificationMail($reserve));
-
-    // Renderizar para ver en pantalla
-    return (new ReserveAdminPaymentNotificationMail($reserve))->render();
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // Renderizar para ver en pantalla
+        return (new ReserveAdminPaymentNotificationMail($reserve))->render();
+    });
 
 
 });
@@ -98,6 +76,7 @@ Route::middleware('auth')->group(function () {
 
     // Solo administrator y super_admin
     Route::middleware('role:administrator,super_admin')->group(function () {
+        Route::get('/reserve/list', [ReserveController::class, 'index'])->name('reserve.index');
         Route::get('/events', [EventController::class, 'index'])->name('events.index');
         Route::get('/events/create', [EventController::class, 'create'])->name('events.create');
         Route::post('/events', [EventController::class, 'store'])->name('events.store');
@@ -107,95 +86,11 @@ Route::middleware('auth')->group(function () {
     });
 
     // ---------------------------
-    // JOBS
-    // ---------------------------
-    Route::get('/jobs/show_all', [JobController::class, 'show_all'])->name('jobs.show_all');
-
-    // Solo administrator y super_admin
-    Route::middleware('role:administrator,super_admin')->group(function () {
-        Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');
-        Route::post('/jobs', [JobController::class, 'store'])->name('jobs.store');
-        Route::delete('/jobs/{event}', [JobController::class, 'destroy'])->name('jobs.destroy');
-    });
-
-    // ---------------------------
-    // RENTS
-    // ---------------------------
-    Route::get('/rents/show_all', [RentController::class, 'show_all'])->name('rents.show_all');
-    // Solo administrator y super_admin
-    Route::middleware('role:administrator,super_admin')->group(function () {
-        Route::get('/rents', [RentController::class, 'index'])->name('rents.index');
-        Route::post('/rents', [RentController::class, 'store'])->name('rents.store');
-        Route::delete('/rents/{event}', [RentController::class, 'destroy'])->name('rents.destroy');
-    });
-
-    // ---------------------------
-    // SERVICES
-    // ---------------------------
-    Route::get('/services/show_all', [ServiceController::class, 'show_all'])->name('services.show_all');
-    // Solo administrator y super_admin
-    Route::middleware('role:administrator,super_admin')->group(function () {
-        Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
-        Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
-        Route::delete('/services/{event}', [ServiceController::class, 'destroy'])->name('services.destroy');
-    });
-
-    // ---------------------------
-    // RESTAURANTS
-    // ---------------------------
-    Route::get('/restaurants/show_all', [RestaurantController::class, 'show_all'])->name('restaurants.show_all');
-    // Solo administrator y super_admin
-    Route::middleware('role:administrator,super_admin')->group(function () {
-        Route::get('/restaurants', [RestaurantController::class, 'index'])->name('restaurants.index');
-        Route::post('/restaurants', [RestaurantController::class, 'store'])->name('restaurants.store');
-        Route::delete('/restaurants/{event}', [RestaurantController::class, 'destroy'])->name('restaurants.destroy');
-    });
-
-    // ---------------------------
-    // BEAUTY
-    // ---------------------------
-    Route::get('/beauty/show_all', [BeautyController::class, 'show_all'])->name('beauty.show_all');
-    // Solo administrator y super_admin
-    Route::middleware('role:administrator,super_admin')->group(function () {
-        Route::get('/beauty', [BeautyController::class, 'index'])->name('beauty.index');
-        Route::post('/beauty', [BeautyController::class, 'store'])->name('beauty.store');
-        Route::delete('/beauty/{event}', [BeautyController::class, 'destroy'])->name('beauty.destroy');
-    });
-
-    // ---------------------------
-    // INVESTMENTS
-    // ---------------------------
-    Route::get('/investment/show_all', [InvestmentController::class, 'show_all'])->name('investment.show_all');
-    // Solo administrator y super_admin
-    Route::middleware('role:administrator,super_admin')->group(function () {
-        Route::get('/investment', [InvestmentController::class, 'index'])->name('investment.index');
-        Route::post('/investment', [InvestmentController::class, 'store'])->name('investment.store');
-        Route::delete('/investment/{event}', [InvestmentController::class, 'destroy'])->name('investment.destroy');
-    });
-
-    // ---------------------------
-    // TOURISM
-    // ---------------------------
-    Route::get('/tourism/show_all', [TourismController::class, 'show_all'])->name('tourism.show_all');
-    // Solo administrator y super_admin
-    Route::middleware('role:administrator,super_admin')->group(function () {
-        Route::get('/tourism', [TourismController::class, 'index'])->name('tourism.index');
-        Route::post('/tourism', [TourismController::class, 'store'])->name('tourism.store');
-        Route::delete('/tourism/{event}', [TourismController::class, 'destroy'])->name('tourism.destroy');
-    });
-
-    // ---------------------------
     // SUBSCRIPTION & BILLING
     // ---------------------------
     Route::get('/subscription/pricing', [SubscriptionController::class, 'pricing'])->name('subscription.pricing');
     Route::post('/subscription/create-checkout-session', [SubscriptionController::class, 'createSession']);
     Route::get('/subscription/return', [SubscriptionController::class, 'return'])->name('subscription.return');
-
-
-
-
-
-
 
 });
 
